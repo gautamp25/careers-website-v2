@@ -9,17 +9,25 @@
       #banner {
         height: 360px;
         width: 100%;
-        object-fit: cover
+        object-fit: cover;
+        margin-bottom:16px;
       </style>
     </head>
     <body>
+      {% include 'nav.html'%}
+      <img class="img-fluid" id="banner" src="https://7872470f-9937-4287-a9bf-31d8013c848b-00-1jwneb3i5z4mf.pike.replit.dev/static/banner.jpg" >
       <div class="container">
         <h1 class="text-center mt-2 mb-4">Welcome to {{company_name}}</h1>
-        <img class="img-fluid" id="banner" src="https://7872470f-9937-4287-a9bf-31d8013c848b-00-1jwneb3i5z4mf.pike.replit.dev/static/banner.jpg" >
-        <h2 class="text-center mt-2 mb-4">About {{company_name}}</h2>
+        <div class="row" style="margin-bottom:16px;">
+          <div class="col-md-6">
         <p class="lead">
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
         </p>
+          </div>
+          <div class="d-none d-md-block col-md-6">
+          <img src="/static/people.jpg" style="height:320px; border-radius:4px;">"
+          </div>
+        </div>
         <h2 class="text-center mt-2 mb-4">Job openings</h2>
         <div>
           {% for job in jobs %}
@@ -27,11 +35,12 @@
           {% endfor %}
         </div>
         <div class="text-center">
-          <button class="btn btn-primary btn-lg">Contact Us</button>
-          <p class="mt-4">Copyright @{{time}},  {{company_name}}</p>
+          <a href="mailto:hello@gtm.com?subject=Question%20about%20Job%20openings&body=My%20name%3A%20%3Cyour%20name%20here%3E%0D%0A%0D%0AMy%20questions%3A%20%3Center%20question%20here%3E" class="btn btn-primary btn-lg">Contact Us</a>
+          <!-- <p class="mt-4">Copyright @{{time}},  {{company_name}}</p> -->
+          
         </div>
       </div>
-      
+      {% include 'footer.html' %}
     </body>
   
 </html>  

@@ -1,5 +1,6 @@
-from sqlalchemy import create_engine
-db_connection_string = "mysql+pymysql://b0ohtjsnkblon805jnyp:pscale_pw_Gk9sKOg2kwB0wv1D0fuYeekUsnxthWepvxDOweCK2xE@aws.connect.psdb.cloud/gtmenterprise?charset=utf8mb4"
+from sqlalchemy import create_engine,text
+import os
+db_connection_string =os.environ['DB_CONNECTION_STRING']
 engine = create_engine(
   db_connection_string,
   connect_args={
@@ -8,3 +9,11 @@ engine = create_engine(
     }
   }
 )
+
+def load_jobs_from_db():
+  with engine.connect() as conn:
+    result = conn.execute(text("select * from jobs"))
+    jobs = []
+    for row in result.all():
+      jobs.append(row._asdict())
+    return jobs
